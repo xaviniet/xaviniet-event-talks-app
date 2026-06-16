@@ -171,5 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   refreshBtn.addEventListener('click', fetchNotes);
   exportBtn.addEventListener('click', exportToCSV);
+
+  // Theme Toggle Switch logic
+  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+  const switchTheme = (e) => {
+    if (e.target.checked) {
+      document.documentElement.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+    }
+  };
+
+  if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Initial check of local storage to set preference
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+      toggleSwitch.checked = true;
+      document.documentElement.classList.add('light-mode');
+    }
+  }
 });
 

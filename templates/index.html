@@ -7,7 +7,16 @@
     <link rel='stylesheet' href='{{ url_for('static', filename='css/style.css') }}'>
 </head>
 <body>
-    <h1>BigQuery Release Notes</h1>
+    <header class="header">
+        <h1>BigQuery Release Notes</h1>
+        <div class="theme-switch-wrapper">
+            <span class="theme-label">Light Mode</span>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+    </header>
     <div class="toolbar">
         <button id='refreshBtn'>Refresh <span class='spinner' id='spinner'></span></button>
         <button id='exportBtn'>Export to CSV</button>
