@@ -8,13 +8,19 @@
 </head>
 <body>
     <h1>BigQuery Release Notes</h1>
-    <button id='refreshBtn'>Refresh <span class='spinner' id='spinner'></span></button>
+    <div class="toolbar">
+        <button id='refreshBtn'>Refresh <span class='spinner' id='spinner'></span></button>
+        <button id='exportBtn'>Export to CSV</button>
+    </div>
     <ul id='notesList'>
         {% for note in notes %}
-        <li class='note' data-content='{{ note.content|e }}' data-title='{{ note.title|e }}'>
+        <li class='note' data-content='{{ note.content|e }}' data-title='{{ note.title|e }}' data-updated='{{ note.updated|e }}'>
             <strong>{{ note.title }}</strong> <em>{{ note.updated }}</em>
             <p class='content'>{{ note.content|safe }}</p>
-            <button class='tweetBtn'>Tweet</button>
+            <div class="actions">
+                <button class='copyBtn'>Copy</button>
+                <button class='tweetBtn'>Tweet</button>
+            </div>
         </li>
         {% endfor %}
     </ul>

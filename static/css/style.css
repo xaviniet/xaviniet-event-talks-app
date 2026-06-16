@@ -11,16 +11,42 @@ h1 {
     color: #ffcc00;
 }
 
-#refreshBtn {
-    display: block;
-    margin: 1rem auto;
-    padding: 0.5rem 1rem;
-    background: #ff6600;
+.toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+#refreshBtn, #exportBtn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    position: relative;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#refreshBtn {
+    background: #ff6600;
+}
+
+#refreshBtn:hover {
+    background: #ff8533;
+}
+
+#exportBtn {
+    background: #28a745;
+}
+
+#exportBtn:hover {
+    background: #218838;
+}
+
+#refreshBtn:active, #exportBtn:active {
+    transform: scale(0.97);
 }
 
 .spinner {
@@ -47,22 +73,44 @@ ul#notesList {
 }
 
 li.note {
-    background: rgba(255,255,255,0.1);
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.08);
+    margin: 1.2rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-li.note button.tweetBtn {
+.actions {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #1da1f2;
-    color: #fff;
+    top: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actions button {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
     border: none;
     border-radius: 4px;
-    padding: 0.3rem 0.6rem;
     cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    transition: background 0.15s ease, opacity 0.15s ease;
 }
+
+.actions button:hover {
+    opacity: 0.9;
+}
+
+.copyBtn {
+    background: #6c757d;
+}
+
+.tweetBtn {
+    background: #1da1f2;
+}
+
