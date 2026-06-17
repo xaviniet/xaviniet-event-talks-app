@@ -31,19 +31,31 @@ def fetch_notes():
 
 @app.route('/')
 def index():
-    notes = fetch_notes()
-    return render_template('index.html', notes=notes)
+    try:
+        notes = fetch_notes()
+        error = False
+    except Exception as e:
+        print("Initial fetch failed:", e)
+        notes = []
+        error = True
+    return render_template('index.html', notes=notes, error=error)
 
 @app.route('/api/notes')
 def api_notes():
-    notes = fetch_notes()
-    return jsonify(notes)
+    try:
+        notes = fetch_notes()
+        return jsonify(notes)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Endpoint used by the client side to refresh notes without full page reload
 @app.route('/refresh')
 def refresh():
-    notes = fetch_notes()
-    return jsonify(notes)
+    try:
+        notes = fetch_notes()
+        return jsonify(notes)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Simple tweet endpoint. If Twitter credentials are set in env, it will post directly.
 # Otherwise it redirects to Twitter's intent URL for manual tweeting.
